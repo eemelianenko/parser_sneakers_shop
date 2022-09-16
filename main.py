@@ -12,7 +12,7 @@ def get_all_pages():
         "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36"
     }
 
-    req = requests.get(url="https://sneakerhead.ru/sale/", headers=headers)
+    req = requests.get(url="https://(site).ru/sale/", headers=headers)
 
     if not os.path.exists("data"):
         os.mkdir("data")
@@ -27,7 +27,7 @@ def get_all_pages():
     pages_count = int(soup.find("div", class_="pagination").find_all("li")[-2].text)
 
     for i in range(1, pages_count + 1):
-        url = f"https://sneakerhead.ru/sale/?PAGEN_1={i}"
+        url = f"https://(site).ru/sale/?PAGEN_1={i}"
         req = requests.get(url=url, headers=headers)
 
         with open(f"data/page_{i}.html", "w", encoding="utf-8") as file:
